@@ -1,0 +1,10 @@
+language: java
+jdk:
+- oraclejdk8
+deploy:
+  provider: heroku
+  api_key:
+    secure: PGTgY7edgs2IJROxVCPCNVl6w89DuUhvKzxgnPrYrd/52SDutXE63cDzgxjh/PGzImld1DlFm4BzIsUnS1XoMXp6hOArv9v6tjn/83Y10e4OJ9KJh0jQkbIkdETU1oSZdbnyJdEPNzheMqeA/HTkVtGzUfw/NeG/rvxbL7+kYtSGbyzDnQnvAm6wGA/9VquOaS4XgV0CoL2wvXBKRTDO+uODozWrb1YqVBoNhxIbYbFjegtDJTxPz8oQ1qmq7+xuI6quKtCfKsUrl1xu3rcfEZVQ+5R32wMLArHj3q8CrTqPfEyameXMVIokbsxopenHh6y5oRd/qlW7ZC+CbpBRWZvUlNxn5ySRfYZTZLafUwoS9O5Vj6BgwYxzGlwfgc3BjrpJ08bNZNjbfaHb+4mGfL2XNX6zb16or4gm0Gm9ndKcFHuOeHCTexQh9zwN3vrEnmePj0vsQrtR+9YPeMc+DiM2uiugn+7EJc/maGM3mwl6rAjolyuIFDjzaJyOFAFPgxXdw1sHsqmanBDvOC5eXX6io+5c3wOCGKqzecEkP0hLL3gqrhRpG2yVhMWqKJbN9VeZsvFaj/V9H6GBdYs7L9ReEQDZwpJUE6Q5m/C8x2xl26jgTMQqKYSLdWbG27FZctb/rwI4r7w2hfpl8ih/gmBgmSx3cjKg2kEp3V6376E=
+  app: java-heroku-test-victor
+  on:
+    repo: VictorKamyshin/tp_java_new
