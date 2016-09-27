@@ -10,6 +10,7 @@ import java.util.Map;
 public class AccountService {
     private Map<String, UserProfile> userNameToUser = new HashMap<>();
 
+    
     public UserProfile addUser(String login, String password, String email) {
         final UserProfile userProfile = new UserProfile(login, email, password);
         userNameToUser.put(login, userProfile);
