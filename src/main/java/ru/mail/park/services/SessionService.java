@@ -11,16 +11,16 @@ import java.util.Map;
  */
 @Service
 public class SessionService {
-    private Map<String, String> SessionIdTologin = new HashMap<>();
+    private Map<String, String> sessionIdTologin = new HashMap<>();
 
     public String addSession(String sessionId, String login) {
-        return SessionIdTologin.put(sessionId, login);
+        return sessionIdTologin.put(sessionId, login);
     }
 
     public String getLogin(String sessionId) {
-        return SessionIdTologin.get(sessionId);
+        return sessionIdTologin.get(sessionId);
     }
 
-    public String removeLogin(String sessionId) { return SessionIdTologin.remove(sessionId); }
+    public String removeLogin(String sessionId) { return sessionIdTologin.remove(sessionId); }
     //To be done
 }

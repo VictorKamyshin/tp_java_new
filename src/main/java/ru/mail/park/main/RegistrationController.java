@@ -28,13 +28,9 @@ public class RegistrationController{
         this.sessionService = sessionService;
     }
 
-    @RequestMapping(path = "/api/user/", method = RequestMethod.POST)
+    @RequestMapping(path = "/user", method = RequestMethod.POST)
     public ResponseEntity login(@RequestBody RegistrationRequest body,
                                 HttpSession httpSession) {
-//    public ResponseEntity login(@RequestParam String login,
-//                                @RequestParam String password,
-//                                @RequestParam String email,
-//                                HttpSession httpSession) {
         final String sessionId = httpSession.getId();
 
         final String login = body.getLogin();
@@ -60,7 +56,7 @@ public class RegistrationController{
     @RequestMapping(path = "/hello", method = RequestMethod.GET)
     public ResponseEntity hello(HttpSession httpSession) {
         final String sessionId = httpSession.getId();
-        String login = sessionService.getLogin(sessionId);
+        final String login = sessionService.getLogin(sessionId);
         if(login!=null) {
             return ResponseEntity.ok(new SuccessResponse("Вы авторизованы"));
         } else {
@@ -71,7 +67,7 @@ public class RegistrationController{
     @RequestMapping(path = "/exit", method = RequestMethod.GET)
     public ResponseEntity exit(HttpSession httpSession) {
         final String sessionId = httpSession.getId();
-        String login = sessionService.removeLogin(sessionId);
+        final String login = sessionService.removeLogin(sessionId);
         if(login != null) {
             return ResponseEntity.ok(new SuccessResponse("Вы больше не авторизованы"));
         } else {
@@ -79,13 +75,15 @@ public class RegistrationController{
         }
     }
 
-    @RequestMapping(path = "/api/session", method = RequestMethod.POST)
+    @RequestMapping(path = "/session", method = RequestMethod.POST)
     public ResponseEntity auth(@RequestBody AuthorisationRequest body,
                                HttpSession httpSession) {
+
         final String sessionId = httpSession.getId();
 
         final String login = body.getLogin();
         final String password = body.getPassword();
+
         if (StringUtils.isEmpty(login)
                 || StringUtils.isEmpty(password)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Некорректный запрос");
@@ -96,7 +94,7 @@ public class RegistrationController{
         }
         if (user.getPassword().equals(password)) {
             final String existingLogin = sessionService.getLogin(sessionId);
-            if(existingLogin!=login) { sessionService.removeLogin(sessionId); }
+            if(existingLogin.equals(login)) { sessionService.removeLogin(sessionId); }
             sessionService.addSession(sessionId, login);
             return ResponseEntity.ok(new SuccessResponse("Вы успешно авторизованы"));
         }
@@ -154,12 +152,12 @@ public class RegistrationController{
     private static final class SuccessResponse {
         private String responce;
 
-        private SuccessResponse(String login) {
-            this.responce = login;
+        private SuccessResponse(String responce) {
+            this.responce = responce;
         }
 
         @SuppressWarnings("unused")
-        public String getLogin() {
+        public String getResponce() {
             return responce;
         }
     }
