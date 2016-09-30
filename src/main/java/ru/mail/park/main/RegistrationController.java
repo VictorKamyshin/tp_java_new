@@ -94,7 +94,7 @@ public class RegistrationController{
         }
         if (user.getPassword().equals(password)) {
             final String existingLogin = sessionService.getLogin(sessionId);
-            if(existingLogin.equals(login)) { sessionService.removeLogin(sessionId); }
+            if(existingLogin==login) { sessionService.removeLogin(sessionId); }
             sessionService.addSession(sessionId, login);
             return ResponseEntity.ok(new SuccessResponse("Вы успешно авторизованы"));
         }
