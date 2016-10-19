@@ -12,7 +12,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @SpringBootApplication
 public class Application {
+
     public static void main(String[] args) {
+    //    Integer port = 5000;
+    //    args[0]= "5000";
         SpringApplication.run(Application.class, args);
     }
 
